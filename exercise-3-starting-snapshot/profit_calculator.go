@@ -33,10 +33,6 @@ func main() {
 	ProfitText := fmt.Sprint(profit)
 	RatioText := fmt.Sprint(ratio)
 
-	ioutil.WriteFile("balance.txt", []byte(EBTText), 0644)
-	ioutil.WriteFile("balance.txt", []byte(ProfitText), 0644)
-	ioutil.WriteFile("balance.txt", []byte(RatioText), 0644)
-
 	output := fmt.Sprint("EBT: %.1f\nProfit: %.1f\nRation: %.1f",ebt,profit,ratio)
 	ioutil.WriteFile("balance.txt", []byte(output), 0644)
 }
