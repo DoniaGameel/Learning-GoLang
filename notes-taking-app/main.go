@@ -25,6 +25,22 @@ func savaData(data saver) error{
 	fmt.Println("Saving the  note succedded!")
 	return nil
 }
+
+// Any value allowed type interface{}
+func printSpmeThing(value interface{}){
+	fmt.Print(value)
+}
+
+// generic function
+/*
+func add [T any] (a, b T) {
+	
+}
+*/
+// t is int or float64 or string only
+func add [T int | float64 | string] (a, b T){
+	return a + b
+}
 func main(){
 	title, content := getNoteData()
 	userNote, err := note.New(title, content)
