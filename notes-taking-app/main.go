@@ -7,6 +7,24 @@ import (
 	"strings"
 	"example.com/note/note"
 )
+
+// creating interface
+type saver interface{
+	Save() error
+}
+
+// generic, flexible and reusable code
+func savaData(data saver) error{
+	err := data.Save()
+
+	if err != nil{
+		fmt.Println("Saving the data failed!")
+		return err
+	}
+
+	fmt.Println("Saving the  note succedded!")
+	return nil
+}
 func main(){
 	title, content := getNoteData()
 	userNote, err := note.New(title, content)
@@ -17,7 +35,8 @@ func main(){
 	}
 
 	userNote.Display()
-
+/*
+this is the code before we usr interface
 	err = userNote.Save()
 
 	if err != nil{
@@ -26,6 +45,12 @@ func main(){
 	}
 
 	fmt.Println("Saving the  note succedded!")
+	*/
+	// it is useful if the same logic is repeated for Note and TODO for example
+	err = savaData(userNote)
+	if err != nil{
+		return
+	}
 }
 
 func getUserInput(prompt string) (string){
