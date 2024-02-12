@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+/*
 func main(){
 	// Building dynamic lists with slices
 	// starting values
@@ -9,6 +10,7 @@ func main(){
 	fmt.Println(prices)
 	fmt.Println(updatedPrices)
 }
+*/
 /*
 func main(){
 	// creating arrays
@@ -37,3 +39,37 @@ func main(){
 	fmt.Println(prices)
 
 }*/
+
+func main(){
+	// initial length of the array = 2
+	// capacity of the array is 5
+	// till 5 elements will have a space and GO will not reallocate
+	// it is dynamic and can be extended
+	userNames := make([]string, 2, 5)
+	// will works
+	userNames[0] = "AA"
+	// also works
+	userNames = append(userNames, "BB")
+	userNames = append(userNames, "CC")
+
+	fmt.Println(userNames[1])
+	// dynamic, initial length is 0
+	//userNames := []string{}
+
+	// looping
+	for range userNames{
+		fmt.Println(userNames)
+	}
+
+	for index, value := range userNames{
+		fmt.Println(index)
+		fmt.Println(value)
+	}
+
+	// values unpacking
+	userNames_2 := []string{"DD","EE"}
+	// append functions takes a list and elements, not another list
+	// we need to perform unpacking
+	userNames = append(userNames, userNames_2...)
+	fmt.Println(userNames)
+}
